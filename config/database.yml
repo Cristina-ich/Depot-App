@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: test
+  pool: 5
+  username: johndoe
+  password: val23nir
+  port: 5432
+  host: localhost

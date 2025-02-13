@@ -1,0 +1,328 @@
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='Depot'*/[0m
+  [1m[35m (591.6ms)[0m  [1m[35mCREATE DATABASE "test" ENCODING = 'unicode' /*application='Depot'*/[0m
+  [1m[35m (58.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='Depot'*/[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Depot'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7458657555131878620) /*application='Depot'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Depot'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (41.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-02-11 15:02:54.028065', '2025-02-11 15:02:54.028069') RETURNING "key" /*application='Depot'*/[0m
+Migrating to CreateProducts (20250211134945)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN /*application='Depot'*/[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "image_url" character varying, "price" decimal(8,2), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Depot'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250211134945') RETURNING "version" /*application='Depot'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Depot'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7458657555131878620) /*application='Depot'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+Started GET "/say/hello" for ::1 at 2025-02-11 17:07:20 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/say/hello"):
+  
+Started GET "/" for ::1 at 2025-02-11 17:07:38 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/johndoe/.rvm/gems/ruby-3.4.1/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/johndoe/.rvm/gems/ruby-3.4.1/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.0ms | GC: 0.0ms)
+Completed 200 OK in 116ms (Views: 10.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/icon.png" for ::1 at 2025-02-11 17:07:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/products" for ::1 at 2025-02-11 17:08:19 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 109.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 131.0ms | GC: 1.0ms)
+Completed 200 OK in 238ms (Views: 85.8ms | ActiveRecord: 50.7ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for ::1 at 2025-02-11 17:08:19 +0200
+Started GET "/icon.svg" for ::1 at 2025-02-11 17:08:19 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/icon.svg"):
+  
+Started GET "/products/new" for ::1 at 2025-02-11 17:08:29 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 17.0ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 21.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.5ms | GC: 0.0ms)
+Completed 200 OK in 110ms (Views: 26.7ms | ActiveRecord: 5.8ms (0 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:10:24 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 34.1ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 36.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 38.4ms | GC: 0.0ms)
+Completed 200 OK in 135ms (Views: 41.3ms | ActiveRecord: 6.6ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:12:17 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.9ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 5.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 0.0ms)
+Completed 200 OK in 58ms (Views: 8.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:12:18 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 36.6ms | GC: 0.7ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 37.5ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | GC: 0.7ms)
+Completed 200 OK in 129ms (Views: 45.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:28:09 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 6.3ms | GC: 0.2ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 6.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.2ms)
+Completed 200 OK in 65ms (Views: 9.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:31:27 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 48.9ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 54.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 91.9ms | GC: 22.2ms)
+Completed 200 OK in 363ms (Views: 102.4ms | ActiveRecord: 17.8ms (0 queries, 0 cached) | GC: 22.2ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:31:28 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 36.4ms | GC: 1.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 38.8ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 49.2ms | GC: 1.0ms)
+Completed 200 OK in 111ms (Views: 54.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/assets/tailwind-e8dc057d.css" for ::1 at 2025-02-11 17:31:29 +0200
+Started GET "/products" for ::1 at 2025-02-11 17:47:20 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (88.9ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 108.7ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 111.6ms | GC: 0.8ms)
+Completed 200 OK in 181ms (Views: -25.9ms | ActiveRecord: 138.8ms (1 query, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-11 17:48:20 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 6.5ms | GC: 0.5ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 10.0ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | GC: 0.5ms)
+Completed 200 OK in 71ms (Views: 21.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/products" for ::1 at 2025-02-11 17:48:31 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  Rendered products/index.html.erb within layouts/application (Duration: 14.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | GC: 0.0ms)
+Completed 200 OK in 66ms (Views: 16.5ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-02-11 17:49:48 +0200
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "product" => {"title" => "docker for Rils Developers", "description" => "Awesome", "image_url" => "rido.jpg", "price" => "19.99$"}, "commit" => "Create Product"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in 'block in ProductsController#create'
+  [1m[36mProduct Create (45.0ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES ('docker for Rils Developers', 'Awesome', 'rido.jpg', 19.99, '2025-02-11 15:49:48.512244', '2025-02-11 15:49:48.512244') RETURNING "id" /*action='create',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in 'block in ProductsController#create'
+  [1m[36mTRANSACTION (31.9ms)[0m  [1m[35mCOMMIT /*action='create',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in 'block in ProductsController#create'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 228ms (ActiveRecord: 77.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/products/1" for ::1 at 2025-02-11 17:49:48 +0200
+Processing by ProductsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='show',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:63:in 'ProductsController#set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 2.4ms | GC: 0.0ms)
+  Rendered products/show.html.erb within layouts/application (Duration: 27.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | GC: 0.0ms)
+Completed 200 OK in 99ms (Views: 28.8ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/products" for ::1 at 2025-02-11 17:57:34 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (36.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered products/index.html.erb within layouts/application (Duration: 56.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 57.7ms | GC: 0.0ms)
+Completed 200 OK in 114ms (Views: 16.6ms | ActiveRecord: 46.7ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/products/1" for ::1 at 2025-02-11 18:04:46 +0200
+Processing by ProductsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (30.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='show',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:63:in 'ProductsController#set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered products/show.html.erb within layouts/application (Duration: 6.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | GC: 0.0ms)
+Completed 200 OK in 91ms (Views: 9.7ms | ActiveRecord: 38.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/1" for ::1 at 2025-02-13 10:55:21 +0200
+Processing by ProductsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mProduct Load (148.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='show',application='Depot',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:63:in 'ProductsController#set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered products/show.html.erb within layouts/application (Duration: 19.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | GC: 0.0ms)
+Completed 200 OK in 261ms (Views: 24.6ms | ActiveRecord: 182.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-02-13 11:22:56 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (43.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/johndoe/.rvm/gems/ruby-3.4.1/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/johndoe/.rvm/gems/ruby-3.4.1/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 185ms (Views: 11.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/icon.png" for ::1 at 2025-02-13 11:22:59 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/products" for ::1 at 2025-02-13 11:23:06 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered products/index.html.erb within layouts/application (Duration: 164.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 179.5ms | GC: 0.0ms)
+Completed 200 OK in 311ms (Views: 145.2ms | ActiveRecord: 42.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/icon.svg" for ::1 at 2025-02-13 11:23:06 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/icon.svg"):
+  
+Started GET "/products" for ::1 at 2025-02-13 11:23:09 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 1.4ms | GC: 0.0ms)
+  Rendered products/index.html.erb within layouts/application (Duration: 14.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | GC: 0.0ms)
+Completed 200 OK in 81ms (Views: 19.6ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-13 11:23:13 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 28.4ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 30.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | GC: 0.5ms)
+Completed 200 OK in 92ms (Views: 32.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Writing tailwind-c97bda5e.css
+Writing application-8b441ae0.css
+Writing stimulus.min-4b1e420e.js
+Writing stimulus-d59b3b7f.js
+Writing stimulus.min-2395e199.js.map
+Writing stimulus-importmap-autoloader-64cc03e1.js
+Writing stimulus-autoloader-9d447422.js
+Writing stimulus-loading-1fc53fe7.js
+Writing turbo.min-5dd5a71a.js.map
+Writing turbo-86e38c3c.js
+Writing turbo.min-fae85750.js
+Writing actiontext.esm-f1c04d34.js
+Writing actiontext-a4ee937e.js
+Writing trix-0d050b00.js
+Writing trix-c4e7be2d.css
+Writing action_cable-5212cfee.js
+Writing actioncable.esm-e0ec9819.js
+Writing actioncable-ac25813f.js
+Writing activestorage.esm-f2909226.js
+Writing activestorage-32201f68.js
+Writing rails-ujs.esm-e925103b.js
+Writing rails-ujs-20eaf715.js
+Started GET "/products/new" for ::1 at 2025-02-13 11:25:19 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Depot'*/[0m
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 51.7ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 59.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 105.7ms | GC: 26.6ms)
+Completed 200 OK in 504ms (Views: 114.8ms | ActiveRecord: 24.3ms (0 queries, 0 cached) | GC: 26.6ms)
+
+
+Started GET "/products/new" for ::1 at 2025-02-13 11:38:40 +0200
+Processing by ProductsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 37.6ms | GC: 0.0ms)
+  Rendered products/new.html.erb within layouts/application (Duration: 40.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 51.4ms | GC: 0.0ms)
+Completed 200 OK in 115ms (Views: 56.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-02-13 11:38:43 +0200
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Exists? (85.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" LIMIT 1 /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:14
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='Depot',controller='products'*/[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/_product.html.erb (Duration: 2.5ms | GC: 0.0ms)
+  Rendered products/index.html.erb within layouts/application (Duration: 130.0ms | GC: 1.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 133.1ms | GC: 1.5ms)
+Completed 200 OK in 243ms (Views: -0.8ms | ActiveRecord: 134.7ms (2 queries, 0 cached) | GC: 1.5ms)
+
+
